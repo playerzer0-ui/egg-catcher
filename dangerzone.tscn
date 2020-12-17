@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Area2D
+
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 162.584, 10 )
+
+[node name="dangerzone" type="Area2D"]
+position = Vector2( 160.716, 189.862 )
+collision_layer = 9
+collision_mask = 2
+script = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
