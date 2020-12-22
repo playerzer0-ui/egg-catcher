@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Button.gd" type="Script" id=1]
+[ext_resource path="res://resources/picture1.png" type="Texture" id=2]
+[ext_resource path="res://SUBWT___.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://resources/icon.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.18921
+margin_bottom = -1.18921
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 242.0
+margin_bottom = 93.0
+custom_fonts/font = SubResource( 1 )
+text = "Use the keys to move
+
+A = left
+D = right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 81.5147
+margin_top = 110.38
+margin_right = 303.515
+margin_bottom = 167.38
+custom_fonts/font = SubResource( 1 )
+text = "Catch as much eggs 
+as possible
+(press 'r' in case of error)"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="picture1" type="Sprite" parent="."]
+position = Vector2( 248.106, 48.6815 )
+scale = Vector2( 0.057938, 0.0439745 )
+texture = ExtResource( 2 )
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 78.1393, 117.738 )
+scale = Vector2( 0.085125, 0.083068 )
+texture = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 4.96609
+margin_top = 148.24
+margin_right = 74.9661
+margin_bottom = 171.24
+custom_fonts/font = SubResource( 2 )
+text = "<BACK"
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world.gd" type="Script" id=2]
+[ext_resource path="res://ARCADECLASSIC.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Label.gd" type="Script" id=4]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Control
+
+"
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32.2779, 21.9742 )
+
+[node name="world" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="background" type="Control" parent="."]
+pause_mode = 2
+margin_right = 321.0
+margin_bottom = 181.0
+script = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160.69, 171.393 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="diff" type="Timer" parent="."]
+
+[node name="score" type="Node2D" parent="."]
+position = Vector2( 142, 0 )
+
+[node name="Control" type="Control" parent="score"]
+margin_left = -142.63
+margin_right = 177.37
+margin_bottom = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="score/Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.3069
+margin_top = -85.5453
+margin_right = -4.30664
+margin_bottom = -70.5453
+custom_fonts/font = SubResource( 1 )
+text = "100"
+align = 2
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scoretext" type="Label" parent="score/Control"]
+margin_left = 245.934
+margin_top = 3.93749
+margin_right = 285.934
+margin_bottom = 18.9375
+custom_fonts/font = SubResource( 2 )
+text = "score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="StaticBody2D" parent="."]
+position = Vector2( -16.3518, 77.087 )
+scale = Vector2( 0.489007, 3.40897 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite"]
+position = Vector2( -10.6731, 16.5467 )
+shape = SubResource( 3 )
+
+[node name="Sprite2" type="StaticBody2D" parent="."]
+position = Vector2( -16.3518, 77.087 )
+scale = Vector2( 0.489007, 3.40897 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2"]
+position = Vector2( 734.628, 16.0735 )
+shape = SubResource( 3 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="diff" to="." method="_on_diff_timeout"]
+
+[editable path="player"]
